@@ -1,0 +1,41 @@
+{
+  "name": "csv-import-demo",
+  "version": "1.0.0",
+  "description": "CSV Import Demo with .NET API and React Frontend",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "format:backend": "dotnet format backend/CsvImportDemo.csproj",
+    "format:backend:check": "dotnet format backend/CsvImportDemo.csproj --verify-no-changes",
+    "test:backend": "dotnet test CsvImportDemo.Tests/CsvImportDemo.Tests.csproj --verbosity normal",
+    "test:backend:coverage": "dotnet test CsvImportDemo.Tests/CsvImportDemo.Tests.csproj --collect:\"XPlat Code Coverage\" --results-directory ./coverage",
+    "build:backend": "dotnet build backend/CsvImportDemo.csproj",
+    "run:backend": "dotnet run --project backend/CsvImportDemo.csproj",
+    "install:frontend": "cd frontend && npm install",
+    "format:frontend": "cd frontend && npm run format",
+    "format:frontend:check": "cd frontend && npm run format:check",
+    "test:frontend": "cd frontend && npm test -- --coverage --watchAll=false",
+    "build:frontend": "cd frontend && npm run build",
+    "start:frontend": "cd frontend && npm start",
+    "format:all": "npm run format:backend && npm run format:frontend",
+    "format:all:check": "npm run format:backend:check && npm run format:frontend:check",
+    "test:all": "npm run test:backend && npm run test:frontend",
+    "build:all": "npm run build:backend && npm run build:frontend"
+  },
+  "devDependencies": {
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10"
+  },
+  "lint-staged": {
+    "backend/**/*.cs": [
+      "dotnet format backend/CsvImportDemo.csproj --include"
+    ],
+    "frontend/src/**/*.{js,jsx,ts,tsx}": [
+      "cd frontend && prettier --write",
+      "cd frontend && eslint --fix"
+    ],
+    "frontend/src/**/*.{json,css,md}": [
+      "cd frontend && prettier --write"
+    ]
+  }
+}

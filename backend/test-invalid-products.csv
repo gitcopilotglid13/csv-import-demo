@@ -1,0 +1,5 @@
+Name,Description,Price,Stock,Category
+,Invalid product with empty name,999.99,10,Electronics
+Valid Product,Valid description,199.99,5,Electronics
+Invalid Price,Product with negative price,-50.99,5,Electronics
+
